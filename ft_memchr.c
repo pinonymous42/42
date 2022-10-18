@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 19:03:15 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/18 18:58:45 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:52:04 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	void	*a;
+	void	*ans;
 
-	a = (unsigned char *)s;
+	ans = (unsigned char *)s;
 	while (n--)
 	{
-		if (*(unsigned char *)a == (unsigned char)c)
-			return (a);
-		a++;
+		if (*(unsigned char *)ans == (unsigned char)c)
+			return (ans);
+		ans++;
 	}
 	return (NULL);
 }
