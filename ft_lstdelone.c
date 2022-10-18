@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:48:54 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/18 14:32:56 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:19:17 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	if (!lst || !del)
-		;
-	else
+	if (lst && del)
 	{
 		del(lst->content);
 		free(lst);

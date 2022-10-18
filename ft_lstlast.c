@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:25:06 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/18 18:58:11 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:30:39 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	if (!lst)
+	if (lst == NULL)
 		return (NULL);
 	while (lst->next)
 		lst = lst->next;
@@ -26,6 +26,5 @@ t_list	*ft_lstlast(t_list *lst)
 // {
 // 	t_list * l =  NULL;
 // 	ft_lstadd_back(&l, ft_lstnew((void*)1));
-// 	printf("%s\n%p\n", (char *)(ft_lstlast(l)->content), ft_lstlast(l)->content);
 // 	return (0);
 // }

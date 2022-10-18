@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:11:37 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/18 14:33:08 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:22:07 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_lstsize(t_list *lst)
 	int		count;
 
 	count = 0;
+	if (lst == NULL)
+		return (0);
 	while (lst)
 	{
 		lst = lst->next;

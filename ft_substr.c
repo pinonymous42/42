@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 14:57:45 by matsushimak       #+#    #+#             */
-/*   Updated: 2022/10/18 19:22:32 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:26:53 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,14 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (ft_strlen(s) < start)
 	{
 		tmp = 0;
-		return (ft_strdup(""));
+		return (ft_calloc(1, 1));
 	}
 	if (ft_strlen(s + start) < len)
 		tmp = ft_strlen(s + start);
 	ret = (char *)malloc(sizeof(char) * (tmp + 1));
 	if (!ret)
 		return (0);
-	ret[tmp] = '\0';
-	ft_memcpy(ret, s + start, tmp);
+	ft_strlcpy(ret, s + start, tmp + 1);
 	return (ret);
 }
 

@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 18:19:56 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/18 14:34:05 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:27:17 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strrchr(const char *s, int c)
 	ans = (char *)s;
 	i = ft_strlen(ans);
 	if ((char)c == '\0')
-		return ("\0");
+		return (ft_calloc(1, 1));
 	while ((ans[i - 1] != (char)c) && i)
 		i--;
 	if (i == 0)

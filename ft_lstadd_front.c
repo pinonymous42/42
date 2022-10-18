@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:59:13 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/18 14:32:52 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:18:17 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (lst)
+	if (lst && new)
 	{
 		if (*lst == NULL)
 			*lst = new;

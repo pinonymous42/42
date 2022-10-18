@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 11:51:07 by matsushimak       #+#    #+#             */
-/*   Updated: 2022/10/18 18:55:33 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:25:14 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!ret)
-		return (0);
+		return (NULL);
 	lead = ret;
 	while (*s)
 	{

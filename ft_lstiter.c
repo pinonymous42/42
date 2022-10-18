@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 21:04:14 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/18 14:32:58 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:19:46 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	if (!lst || !f)
-		;
-	else
+	if (lst && f)
 	{
 		while (lst)
 		{

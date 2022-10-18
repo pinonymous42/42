@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:07:30 by matsushimak       #+#    #+#             */
-/*   Updated: 2022/10/18 15:53:26 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:25:00 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	ret = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!ret)
-		return (0);
+		return (NULL);
 	*ret = '\0';
 	ft_strlcat(ret, s1, ft_strlen(s1) + 1);
 	ft_strlcat(ret, s2, ft_strlen(s1) + ft_strlen(s2) + 1);
