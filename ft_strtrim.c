@@ -6,37 +6,19 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:32:40 by matsushimak       #+#    #+#             */
-/*   Updated: 2022/10/18 14:34:08 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:54:50 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static char	*ft_strndup(char *first, size_t len)
-{
-	char	*ret;
-	char	*tmp;
-
-	ret = (char *)malloc(sizeof(char) * (len + 1));
-	if (!ret)
-		return (0);
-	tmp = ret;
-	while (len)
-	{
-		*ret = *first;
-		ret++;
-		first++;
-		len--;
-	}
-	*ret = '\0';
-	return (tmp);
-}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*first;
 	char	*last;
 
+	if (s1 == NULL)
+		return (NULL);
 	first = (char *)s1;
 	last = (char *)(s1 + ft_strlen(s1) - 1);
 	if (s1 == 0)
@@ -54,8 +36,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 			last--;
 	}
 	if (first > last)
-		return (ft_strdup(""));
-	return (ft_strndup(first, (last - first + 1)));
+		return (ft_calloc(1, 1));
+	return (ft_substr(s1, (first - s1), (last - first + 1)));
 }
 
 // #include <stdio.h>

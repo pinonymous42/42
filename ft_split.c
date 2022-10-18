@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:55:55 by matsushimak       #+#    #+#             */
-/*   Updated: 2022/10/18 14:33:34 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 16:54:23 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	**ft_split(char const *s, char c)
 	}
 	if (amount != 0)
 		ans[i++] = ft_cpy(s - amount, &amount);
-	ans[i] = 0;
+	ans[i] = NULL;
 	return (ans);
 }
 

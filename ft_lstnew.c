@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:35:57 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/18 14:33:05 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:58:32 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_list	*ft_lstnew(void *content)
 
 	ret = (t_list *)malloc(sizeof(t_list));
 	if (!ret)
-		return (0);
+		return (NULL);
 	ret->content = content;
 	ret->next = 0;
 	return (ret);

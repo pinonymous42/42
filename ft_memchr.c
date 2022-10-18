@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 19:03:15 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/18 14:33:11 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:58:45 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 			return (a);
 		a++;
 	}
-	return (0);
+	return (NULL);
 }
 
 // #include        <stdio.h>

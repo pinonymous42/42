@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:40:01 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/18 14:32:44 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:52:20 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,17 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
 
-	if (lst)
+	if (new)
 	{
-		if (*lst == NULL)
-			*lst = new;
-		else
+		if (lst)
 		{
-			last = ft_lstlast(*lst);
-			last->next = new;
+			if (*lst == NULL)
+				*lst = new;
+			else
+			{
+				last = ft_lstlast(*lst);
+				last->next = new;
+			}
 		}
 	}
 }

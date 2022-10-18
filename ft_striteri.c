@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 12:06:52 by matsushimak       #+#    #+#             */
-/*   Updated: 2022/10/18 14:33:44 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:56:30 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	unsigned int	i;
 
 	i = 0;
-	while (*s)
+	while (s[i])
 	{
-		f(i, s);
+		f(i, &s[i]);
 		i++;
-		s++;
 	}
 }
