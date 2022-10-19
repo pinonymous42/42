@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:32:44 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/18 15:37:09 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/19 18:49:04 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 
 	i = 0;
 	s_len = ft_strlen(src);
-	if (dst == NULL)
+	if (dst == NULL && dstsize == 0)
 		return (s_len);
 	d_len = ft_strlen(dst);
 	if (d_len >= dstsize)
@@ -41,14 +41,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 // #include <string.h>
 // int main(void)
 // {
-//     char str1[7] = "123456";
-//     char str2[] = "123456789";
-//     printf("%zu\n",ft_strlcat(NULL,"a",0));
-// 	printf("%s\n",str1);
-
-// 	char str11[7] = "123456";
-//     char str22[] = "123456789";
-//     printf("%lu\n",strlcat(NULL,"a",0));
-// 	printf("%s\n",str11);
-//     return 0;
+//     printf("%zu\n", strlcat(NULL, NULL, 0));
+// 	return (0);
 // }

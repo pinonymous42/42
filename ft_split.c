@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:55:55 by matsushimak       #+#    #+#             */
-/*   Updated: 2022/10/18 16:54:23 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/19 20:39:32 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,19 @@ static int	count_sep(char const *s, char c)
 	return (count);
 }
 
-static char	*ft_cpy(const char *s1, int *amount)
+static char	*ft_cpy(const char *s1, int *amount, char **ans, size_t i)
 {
 	char	*ret;
 	char	*lead;
 
 	ret = (char *)malloc(sizeof(char) * (*amount + 1));
 	if (!ret)
-		return (0);
+	{
+		while (i >= 0)
+			free(ans[i--]);
+		free(ans);
+		return (NULL);
+	}
 	lead = ret;
 	while (*amount)
 	{
@@ -60,17 +65,21 @@ static char	*ft_cpy(const char *s1, int *amount)
 		*amount -= 1;
 	}
 	*ret = '\0';
+	ans[i] = lead;
+	ans[++i] = NULL;
 	return (lead);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**ans;
-	int		i;
+	size_t	i;
 	int		amount;
 
 	i = 0;
 	amount = 0;
+	if (s == NULL)
+		return (NULL);
 	ans = (char **)malloc(sizeof(char *) * (count_sep(s, c) + 1));
 	if (!ans)
 		return (NULL);
@@ -78,16 +87,15 @@ char	**ft_split(char const *s, char c)
 	{
 		if (check(s, c))
 		{
-			if (amount != 0)
-				ans[i++] = ft_cpy(s - amount, &amount);
+			if (amount != 0 && !ft_cpy(s - amount, &amount, ans, i++))
+				return (NULL);
 		}
 		else
 			amount++;
 		s++;
 	}
-	if (amount != 0)
-		ans[i++] = ft_cpy(s - amount, &amount);
-	ans[i] = NULL;
+	if (amount != 0 && !ft_cpy(s - amount, &amount, ans, i++))
+		return (NULL);
 	return (ans);
 }
 

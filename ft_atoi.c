@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 13:07:43 by matsushimak       #+#    #+#             */
-/*   Updated: 2022/10/18 21:03:49 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/19 18:50:13 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	overflow(long i, char str, int minus)
 			return (-1);
 	if (minus == -1)
 		if ((i >= 922337203685477580 && digit > 8)
-			| (i >= 922337203685477581))
+			|| (i >= 922337203685477581))
 			return (0);
 	return (1);
 }

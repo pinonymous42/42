@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 18:19:56 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/18 21:27:17 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/19 13:17:47 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,24 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*ans;
 	size_t	i;
+	char	*ans;
+	char	*tmp;
 
+	i = ft_strlen(s);
 	ans = (char *)s;
-	i = ft_strlen(ans);
+	tmp = NULL;
 	if ((char)c == '\0')
-		return (ft_calloc(1, 1));
-	while ((ans[i - 1] != (char)c) && i)
-		i--;
-	if (i == 0)
-		return (NULL);
-	return (&ans[i - 1]);
+		return ((ans + i));
+	while (*ans)
+	{
+		if (*ans == (char)c)
+			tmp = ans;
+		ans++;
+	}
+	if (tmp)
+		return (tmp);
+	return (NULL);
 }
 
 // #include <stdio.h>
@@ -33,7 +39,7 @@ char	*ft_strrchr(const char *s, int c)
 // int main(void)
 // {
 // 	char *s = "libft-test-tokyo";
-// 	printf("%s\n", 	ft_strrchr(s, '\0'));
-// 	printf("%s\n", 	strrchr(s, '\0'));
+// 	printf("%s\n", ft_strrchr(s, 0));
+// 	printf("%s\n", 	strrchr(s, 0));
 // 	return (0);
 // }

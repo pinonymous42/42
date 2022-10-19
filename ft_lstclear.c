@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 20:51:16 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/18 21:18:49 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/19 19:27:36 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 			ft_lstdelone(*lst, del);
 			*lst = tmp;
 		}
+		lst = NULL;
 	}
 }
 
