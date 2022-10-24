@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 14:16:58 by matsushimak       #+#    #+#             */
-/*   Updated: 2022/10/18 14:32:27 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/23 23:03:01 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*ft_calloc(size_t count, size_t size)
 
 	if (count == 0 || size == 0)
 		return (ft_calloc(1, 1));
-	if (SIZE_MAX / size <= count)
+	if (SIZE_MAX / size < count)
 		return (NULL);
 	else
 	{

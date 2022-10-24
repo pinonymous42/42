@@ -6,18 +6,11 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 16:55:55 by matsushimak       #+#    #+#             */
-/*   Updated: 2022/10/19 20:39:32 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/21 12:52:46 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	check(char const *s, char c)
-{
-	if (*s == c)
-		return (1);
-	return (0);
-}
 
 static int	count_sep(char const *s, char c)
 {
@@ -28,7 +21,7 @@ static int	count_sep(char const *s, char c)
 	count = 0;
 	while (*s)
 	{
-		if (check(s, c))
+		if (*s == c)
 		{
 			if (amount != 0)
 				count++;
@@ -43,72 +36,64 @@ static int	count_sep(char const *s, char c)
 	return (count);
 }
 
-static char	*ft_cpy(const char *s1, int *amount, char **ans, size_t i)
+static int	check(char **ans, size_t i)
 {
-	char	*ret;
-	char	*lead;
-
-	ret = (char *)malloc(sizeof(char) * (*amount + 1));
-	if (!ret)
+	if (ans[i] == NULL)
 	{
 		while (i >= 0)
-			free(ans[i--]);
+		{
+			free(ans[i]);
+			i--;
+		}
 		free(ans);
-		return (NULL);
+		return (0);
 	}
-	lead = ret;
-	while (*amount)
+	return (1);
+}
+
+static char	**do_it(const char *s, char c, char **ans, size_t i)
+{
+	size_t	len;
+
+	while (*s)
 	{
-		*ret = *s1;
-		ret++;
-		s1++;
-		*amount -= 1;
+		if (*s == c)
+			s++;
+		else
+		{
+			len = 0;
+			while (*s && *s != c)
+			{
+				len++;
+				s++;
+			}
+			ans[i] = ft_substr(s - len, 0, len);
+			if (!check(ans, i))
+				return (NULL);
+			i++;
+		}
 	}
-	*ret = '\0';
-	ans[i] = lead;
-	ans[++i] = NULL;
-	return (lead);
+	ans[i] = NULL;
+	return (ans);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**ans;
-	size_t	i;
-	int		amount;
 
-	i = 0;
-	amount = 0;
 	if (s == NULL)
 		return (NULL);
 	ans = (char **)malloc(sizeof(char *) * (count_sep(s, c) + 1));
 	if (!ans)
 		return (NULL);
-	while (*s)
-	{
-		if (check(s, c))
-		{
-			if (amount != 0 && !ft_cpy(s - amount, &amount, ans, i++))
-				return (NULL);
-		}
-		else
-			amount++;
-		s++;
-	}
-	if (amount != 0 && !ft_cpy(s - amount, &amount, ans, i++))
-		return (NULL);
+	ans = do_it(s, c, ans, 0);
 	return (ans);
 }
 
 // #include <stdio.h>
 // int main(void)
 // {
-// 	char s1[] = "abzdzefza";
-// 	char s = 'z';
-// 	char **ans = ft_split(s1, s);
-// 	while (*ans)
-// 	{
-// 	printf("%s\n", *ans);
-// 	ans++;
-// 	}
+// 	char **tab = ft_split("     ", ' ');
+// 	printf("%s\n", tab[0]);
 // 	return (0);
 // }

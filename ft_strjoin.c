@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:07:30 by matsushimak       #+#    #+#             */
-/*   Updated: 2022/10/19 19:24:54 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/21 13:16:09 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 // {
 // 	// char s1[] = "abc";
 // 	// char s2[] = "def";
-// 	printf("%s\n", ft_strjoin(NULL, "a"));
+// 	printf("%s\n", ft_strjoin("a", NULL));
 // 	return (0);
 // }

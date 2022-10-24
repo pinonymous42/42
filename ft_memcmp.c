@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 21:35:57 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/19 18:40:54 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/21 13:19:19 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 
 // int main(void)
 // {
-// 	printf("%d\n", ft_memcmp("a", NULL, 1));
+// 	printf("%d\n", memcmp(NULL, NULL, 0));
 // 	return (0);
 // }

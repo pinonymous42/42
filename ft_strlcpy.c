@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 17:32:47 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/18 14:33:51 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/23 23:12:20 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,9 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 // #include <string.h>
 // int main(void)
 // {
-//     char str1[25] = "123456";
-//     char str2[] = "abcdefgh";
-//     printf("%zu\n",ft_strlcpy(str1,str2,0));
-// 	printf("%s\n",str1);
-
-// 	char str11[25] = "123456";
-//     char str22[] = "abcdefgh";
-//     printf("%lu\n",strlcpy(str11,str22,0));
-// 	printf("%s\n",str11);
+// 	char *dst = NULL;
+// 	char *src = "a";
+// 	strlcpy(dst, src, 8);
+// 	printf("%s\n", dst);
 //     return 0;
 // }

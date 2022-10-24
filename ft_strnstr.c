@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:32:40 by matsushimak       #+#    #+#             */
-/*   Updated: 2022/10/19 19:02:58 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/23 23:18:29 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	tmp1 = (char *)haystack;
 	if (*needle == '\0')
 		return (tmp1);
-	if (len == 0)
+	if (haystack == NULL && needle != NULL && len == 0)
 		return (NULL);
 	while (*tmp1 && len)
 	{
@@ -44,6 +44,6 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 // #include <string.h>
 // int main(void)
 // {
-// 	printf("%s\n", strnstr(NULL, "", 0));
+// 	printf("%s\n", ft_strnstr(NULL, "aiueo", 5));
 // 	return (0);
 // }

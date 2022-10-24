@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 15:32:40 by matsushimak       #+#    #+#             */
-/*   Updated: 2022/10/19 20:49:15 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/23 23:05:32 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,11 @@ char	*ft_strtrim(char const *s1, char const *set)
 	first = (char *)s1;
 	last = (char *)(s1 + ft_strlen(s1) - 1);
 	while (*first && ft_strchr(set, *first))
-	{
-		if (ft_strchr(set, *first))
 			first++;
-	}
 	while (last != first && ft_strchr(set, *last))
-	{
-		if (ft_strchr(set, *last))
 			last--;
-	}
-	if (first > last)
-		return (ft_calloc(1, 1));
+	// if (first > last)
+	// 	return (ft_calloc(1, 1));
 	return (ft_substr(s1, (first - s1), (last - first + 1)));
 }
 

@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 19:13:41 by kohmatsu          #+#    #+#             */
-/*   Updated: 2022/10/18 21:50:34 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2022/10/23 23:04:28 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);
-	write(fd, "\n", 1);
+	if (s != NULL)
+		write(fd, "\n", 1);
 }
 
 // #include <stdio.h>
