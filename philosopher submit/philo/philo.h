@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 22:45:52 by kohmatsu          #+#    #+#             */
-/*   Updated: 2023/03/26 17:56:40 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:02:55 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_info{
 	pthread_mutex_t	*fork;
 	pthread_mutex_t	time_lock;
 	pthread_mutex_t	status_lock;
+	pthread_mutex_t	dead_or_alive_lock;
 	pthread_mutex_t	meal_lock;
 	pthread_mutex_t	log_lock;
 }t_info;

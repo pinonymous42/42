@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 22:45:36 by kohmatsu          #+#    #+#             */
-/*   Updated: 2023/03/26 17:59:02 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:06:11 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,38 +18,42 @@ static void	kill_philo(t_philo *philo)
 
 	i = 0;
 	printf("%zu %d died\n", get_timestamp() - philo->info->start, philo->number);
-	pthread_mutex_lock(&(philo->info->status_lock));
+	pthread_mutex_lock(&(philo->info->dead_or_alive_lock));
 	while (i < philo->info->philo_num)
 	{
 		philo->info->philo[i].dead_or_alive = DIED;
 		i++;
 	}
-	pthread_mutex_unlock(&(philo->info->status_lock));
+	pthread_mutex_unlock(&(philo->info->dead_or_alive_lock));
 }
 
 void	print_log(t_philo *philo, int option)
 {
 	size_t	time;
+	int		dead_or_alive;
 	int		status;
-
+	
 	pthread_mutex_lock(&(philo->info->log_lock));
 	pthread_mutex_lock(&(philo->info->time_lock));
 	time = philo->info->log;
 	pthread_mutex_unlock(&(philo->info->time_lock));
+	pthread_mutex_lock(&(philo->info->dead_or_alive_lock));
+	dead_or_alive= philo->dead_or_alive;
+	pthread_mutex_unlock(&(philo->info->dead_or_alive_lock));
 	pthread_mutex_lock(&(philo->info->status_lock));
-	status = philo->dead_or_alive;
+	status= philo->status;
 	pthread_mutex_unlock(&(philo->info->status_lock));
-	if (status == LIVE && option == DIED)
+	if (dead_or_alive == LIVE && option == DIED)
 		kill_philo(philo);
-	else if (philo->status == THINKING && option == FORK
-		&& status == LIVE)
+	else if (status == THINKING && option == FORK
+		&& dead_or_alive == LIVE)
 		printf("%zu %d has taken a fork\n",
 			time - philo->info->start, philo->number);
-	else if (philo->status == THINKING && status == LIVE)
+	else if (status == THINKING && dead_or_alive == LIVE)
 		printf("%zu %d is thinking\n", time - philo->info->start, philo->number);
-	else if (philo->status == EATING && status == LIVE)
+	else if (status == EATING && dead_or_alive == LIVE)
 		printf("%zu %d is eating\n", time - philo->info->start, philo->number);
-	else if (philo->status == SLEEPING && status == LIVE)
+	else if (status == SLEEPING && dead_or_alive == LIVE)
 		printf("%zu %d is sleeping\n", time - philo->info->start, philo->number);
 	pthread_mutex_unlock(&(philo->info->log_lock));
 }
@@ -64,6 +68,7 @@ static void	finish(t_info *info)
 	pthread_mutex_destroy(&(info->time_lock));
 	pthread_mutex_destroy(&(info->log_lock));
 	pthread_mutex_destroy(&(info->meal_lock));
+	pthread_mutex_destroy(&(info->dead_or_alive_lock));
 	pthread_mutex_destroy(&(info->status_lock));
 	if (info->philo)
 		free(info->philo);
@@ -85,9 +90,9 @@ static void	simulation(t_philo *philo)
 		eating(philo);
 		sleeping(philo);
 		thinking(philo);
-		pthread_mutex_lock(&(philo->info->status_lock));
+		pthread_mutex_lock(&(philo->info->dead_or_alive_lock));
 		status = philo->dead_or_alive;
-		pthread_mutex_unlock(&(philo->info->status_lock));
+		pthread_mutex_unlock(&(philo->info->dead_or_alive_lock));
 		if (status == DIED || status == ENOUGH)
 			return ;
 	}

@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 22:54:07 by kohmatsu          #+#    #+#             */
-/*   Updated: 2023/03/26 17:57:47 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:04:32 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static int	check_philo(t_philo *philo)
 		pthread_mutex_unlock(&(philo->info->meal_lock));
 		if (meal_count != 0 && meal_count == philo->info->must_eat)
 		{
-			pthread_mutex_lock(&(philo->info->status_lock));
+			pthread_mutex_lock(&(philo->info->dead_or_alive_lock));
 			philo->dead_or_alive = ENOUGH;
-			pthread_mutex_unlock(&(philo->info->status_lock));
+			pthread_mutex_unlock(&(philo->info->dead_or_alive_lock));
 			return (1);
 		}
 	}
@@ -57,9 +57,9 @@ void	monitoring(t_philo *philo)
 
 	while (1)
 	{
-		pthread_mutex_lock(&(philo->info->status_lock));
+		pthread_mutex_lock(&(philo->info->dead_or_alive_lock));
 		check_status = philo->dead_or_alive;
-		pthread_mutex_unlock(&(philo->info->status_lock));
+		pthread_mutex_unlock(&(philo->info->dead_or_alive_lock));
 		if (check_status == LIVE)
 		{
 			if (check_philo(philo))

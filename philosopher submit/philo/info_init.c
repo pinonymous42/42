@@ -6,7 +6,7 @@
 /*   By: kohmatsu <kohmatsu@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 22:55:13 by kohmatsu          #+#    #+#             */
-/*   Updated: 2023/03/26 15:16:18 by kohmatsu         ###   ########.fr       */
+/*   Updated: 2023/03/27 12:04:54 by kohmatsu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int	mutex_array_init(t_info *info)
 	if (pthread_mutex_init(&(info->log_lock), NULL))
 		return (1);
 	if (pthread_mutex_init(&(info->meal_lock), NULL))
+		return (1);
+	if (pthread_mutex_init(&(info->dead_or_alive_lock), NULL))
 		return (1);
 	if (pthread_mutex_init(&(info->status_lock), NULL))
 		return (1);
